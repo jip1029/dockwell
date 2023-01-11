@@ -21,7 +21,14 @@ ChartJS.register(
   Legend
 );
 
-export default function ChartComponent(props) {
+export default function ChartComponent({ metric, slideInfo, dataLength }) {
+  if (slideInfo.value.length > 10) {
+    slideInfo.value = slideInfo.value.slice(
+      slideInfo.value.length - dataLength
+    );
+    slideInfo.time = slideInfo.time.slice(slideInfo.time.length - dataLength);
+  }
+  // console.log(slideInfo.value);
   const options = {
     // responsive: true,
     plugins: {
@@ -30,19 +37,26 @@ export default function ChartComponent(props) {
       },
       title: {
         display: true,
-        text: `${props.metric}`,
+        text: `${metric}`,
+      },
+    },
+    scales: {
+      xAxis: {
+        ticks: {
+          maxTicksLimit: 10,
+        },
       },
     },
     // maintainAspectRatio: false,
   };
 
   const data = {
-    labels: props.slideInfo.time,
+    labels: slideInfo.time,
     datasets: [
       {
         label: 'hello',
-        data: props.slideInfo.value,
-        borderColor: '#577399',
+        data: slideInfo.value,
+        borderColor: '#f1d3b3',
         backgroundColor: '#fe605555',
       },
     ],
