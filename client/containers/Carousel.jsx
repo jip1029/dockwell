@@ -7,7 +7,7 @@ function CarouselDisplay(props) {
   //carousel vvvvvvvvvvvvvvvvvvvvvvvvvvv
   const interval = 50000000;
   const [index, setIndex] = useState(0);
-  const [dataLength, setDataLength] = useState(100);
+  const [dataLength, setDataLength] = useState(10);
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
@@ -27,51 +27,55 @@ function CarouselDisplay(props) {
         <option value={100}>100</option>
         <option value={500}>500</option>
       </select>
-
-      <Chart
-        className="lineChart"
-        dataLength={dataLength}
-        slideInfo={obj.memory}
-        metric="Memory Usage (bytes)"
-        name={obj.Names}
-      />
-      <Chart
-        className="lineChart"
-        dataLength={dataLength}
-        slideInfo={obj.cpu}
-        metric="CPU Usage"
-        name={obj.Names}
-      />
-      <Chart
-        className="lineChart"
-        dataLength={dataLength}
-        slideInfo={obj.memCache}
-        metric="Memory Cache"
-        name={obj.Names}
-      />
+      <div className="chart">
+        <Chart
+          className="lineChart"
+          dataLength={dataLength}
+          slideInfo={obj.memory}
+          metric="Memory Usage (bytes)"
+          name={obj.Names}
+          style={{ display: 'inline' }}
+        />
+      </div>
+      <div className="chart">
+        <Chart
+          className="lineChart"
+          dataLength={dataLength}
+          slideInfo={obj.cpu}
+          metric="CPU Usage"
+          name={obj.Names}
+          style={{ display: 'inline' }}
+        />
+      </div>
+      <div className="chart">
+        <Chart
+          className="lineChart"
+          dataLength={dataLength}
+          slideInfo={obj.memCache}
+          metric="Memory Cache"
+          name={obj.Names}
+          style={{ display: 'inline' }}
+        />
+      </div>
     </Carousel.Item>
   ));
 
- 
   return (
-      <Carousel
-        controls={true}
-        prevLabel={''}
-        nextLabel={''}
-        activeIndex={index}
-        onSelect={handleSelect}
-        keyboard={true}
-      >
-        {carouselSlides}
-        {/* <Carousel.Item interval={interval}>
+    <Carousel
+      controls={true}
+      prevLabel={''}
+      nextLabel={''}
+      activeIndex={index}
+      onSelect={handleSelect}
+      keyboard={true}
+    >
+      {carouselSlides}
+      {/* <Carousel.Item interval={interval}>
         </Carousel.Item>
         <Carousel.Item interval={interval}></Carousel.Item>
         <Carousel.Item interval={interval}></Carousel.Item> */}
-      </Carousel>
-    );
-
+    </Carousel>
+  );
 }
 
 export default CarouselDisplay;
-
-

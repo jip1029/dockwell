@@ -11,13 +11,11 @@ body {
 }
 
 .App {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // height: 90vh;
+  height: 100vh;
 }
 
 .main {
+  height: 100%;
   display: grid;
   grid-template-columns: 1.5fr 3fr 1fr;
   margin: 15px auto;
@@ -42,7 +40,6 @@ body {
     background-color: $panels;
     margin-bottom: 20px;
     // filter: blur(3px);
-
 
     p {
       margin: 0;
@@ -112,14 +109,16 @@ body {
 }
 
 .middle {
-  h2 {
-    // width: 100%;
-    align-self: center;
-  }
-  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.Carousel {
+.carousel {
+  height: 600px;
+  overflow: scroll;
+}
+
+.carousel-inner {
   width: 100%;
   margin: none;
 
@@ -128,21 +127,11 @@ body {
   }
 }
 
-.Carousel-item {
-  grid-template-columns: 1fr 1fr;
-  height: 100vh;
-}
-
 .SystemMetrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   width: 100%;
-  height: 60%;
-  // display: flex;
-  // flex-direction: row;
-  .guage {
-    width: 25%;
-  }
+  margin-top: 20px;
 }
 
 .CPU-metric,
@@ -165,16 +154,16 @@ body {
   // .SystemMetrics {
 }
 
-.carousel-item .active {
-  // display: flex;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  background-color: $panels;
-  // flex-direction: column;
-  // overflow: scroll;
-  // flex-wrap: wrap;
-  height: 50vh;
-}
+// .carousel-item .active {
+//   // display: flex;
+//   grid-template-columns: 1fr 1fr;
+//   grid-template-rows: 1fr 1fr;
+//   background-color: $panels;
+//   // flex-direction: column;
+//   // overflow: scroll;
+//   // flex-wrap: wrap;
+//   height: 50vh;
+// }
 
 .chart-container {
   width: 200px;
