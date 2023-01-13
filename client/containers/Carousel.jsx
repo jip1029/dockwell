@@ -5,7 +5,7 @@ import Chart from '../components/Chart.jsx';
 
 function CarouselDisplay(props) {
   const [index, setIndex] = useState(0);
-  const [dataLength, setDataLength] = useState(100);
+  const [dataLength, setDataLength] = useState(10);
   const interval = 50000000;
 
   const handleSelect = (selectedIndex) => {
@@ -23,6 +23,7 @@ function CarouselDisplay(props) {
     >
       {props.activeContainers.map((obj, i) => (
         <Carousel.Item interval={interval} key={'container ' + i}>
+<<<<<<< HEAD
           <div className="header">
             <h2 style={{ display: 'inline', marginRight: '8px' }}>
               {obj.Names}
@@ -38,6 +39,21 @@ function CarouselDisplay(props) {
               <option value={100}>100</option>
               <option value={500}>500</option>
             </select>
+=======
+          <div className='header'>
+          <h2 style={{ display: 'inline', marginRight: '8px' }}>{obj.Names}</h2>
+          <select
+            onChange={(e) => {
+              e.preventDefault();
+              setDataLength(e.target.value);
+            }}
+          >
+            <option value={10}>10</option>
+            <option value={50}>50</option>
+            <option value={100}>100</option>
+            <option value={500}>500</option>
+          </select>
+>>>>>>> 93ab0c329990b9c7ac045ecb10e6ea2120ab92ef
           </div>
           <Chart
             className="lineChart"

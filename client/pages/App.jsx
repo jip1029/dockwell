@@ -53,24 +53,15 @@ const App = () => {
                   ...prev[key].cpu.time,
                   ...res.data[key].cpu.time,
                 ];
-                //ccpu = cumulative cpu
-                newQueryState[key].ccpu.value = [
-                  ...prev[key].ccpu.value,
-                  ...res.data[key].ccpu.value,
-                  //...(prev[key].cpu.value[prev[key].cpu.value.length] - res.data[key].cpu.value[0])
-                ];
                 newQueryState[key].cpu.value = [
                   ...prev[key].cpu.value,
-                  // ...res.data[key].cpu.value,
-                  ...[
-                    prev[key].ccpu.value[prev[key].ccpu.value.length - 1] -
-                      res.data[key].ccpu.value[0],
-                  ],
+                  ...res.data[key].cpu.value,
                 ];
               }
             }
 
             setLoadingScreen(false);
+            console.log('State', newQueryState);
             return newQueryState;
           });
         }
@@ -105,6 +96,7 @@ const App = () => {
   return (
     <div className="App">
       {loadingScreen && (
+<<<<<<< HEAD
         <div className="loadGauge">
           <LiquidGauge
             percent={0}
@@ -113,12 +105,34 @@ const App = () => {
             label={'LOADING METRICS'}
           />
         </div>
+=======
+        <>
+          <div className="loadGauge">
+            <LiquidGauge
+              percent={0}
+              width={500}
+              height={500}
+              label={'LOADING METRICS...'}
+            />
+          </div>
+          {/* <p>LOADING METRICS</p> */}
+        </>
+>>>>>>> 93ab0c329990b9c7ac045ecb10e6ea2120ab92ef
       )}
       {!loadingScreen && (
         <div className="main">
           <div className="left">
+<<<<<<< HEAD
             <div className="title">DOCKWELL</div>
             <Logs activeContainers={activeContainers} />
+=======
+            <div className="title">Dockwell.</div>
+            <h2>A docker visualizer</h2>
+            <Logs
+              classname="logs-container"
+              activeContainers={activeContainers}
+            />
+>>>>>>> 93ab0c329990b9c7ac045ecb10e6ea2120ab92ef
           </div>
           <div className="right">
             <div className="top">
