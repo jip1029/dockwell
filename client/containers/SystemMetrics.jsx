@@ -5,8 +5,6 @@ import Memory from '../components/metrics/Memory.jsx';
 import CpuPer from '../components/metrics/CpuPer.jsx';
 import MemPer from '../components/metrics/MemPer.jsx';
 
-
-
 const systemMetrics = ({ totals, activeContainers }) => {
   const memPieData = [];
   const memPieLabels = [];
@@ -18,24 +16,27 @@ const systemMetrics = ({ totals, activeContainers }) => {
     cpuPieLabels.push(activeContainers[i].Names);
     let memArr = activeContainers[i].memory.value;
     let cpuArr = activeContainers[i].cpu.value;
-    memPieData.push( memArr[memArr.length-1])
-    cpuPieData.push( cpuArr[cpuArr.length-1])
-  };
+    memPieData.push(memArr[memArr.length - 1]);
+    cpuPieData.push(cpuArr[cpuArr.length - 1]);
+  }
   // console.log('memPieData', memPieData);
   // console.log('memPieLabels', memPieLabels);
   // console.log('cpuPieData', cpuPieData);
   // console.log('cpuPieLabels', cpuPieLabels);
-  
 
   //const {cpu, memory} = totals
   const totalmetrics = totals ? totals : {};
 
   return (
     <div className="SystemMetrics">
-      <CPU totals={totalmetrics} />
-      <Memory totals={totalmetrics} />
-      <CpuPer cpuData={cpuPieData} cpuLabels={cpuPieLabels} />
-      <MemPer memData={memPieData} memLabels={memPieLabels} />
+      <div className="totals">
+        <CPU totals={totalmetrics} />
+        <Memory totals={totalmetrics} />
+      </div>
+      <div className="per">
+        <CpuPer cpuData={cpuPieData} cpuLabels={cpuPieLabels} />
+        <MemPer memData={memPieData} memLabels={memPieLabels} />
+      </div>
     </div>
   );
 };

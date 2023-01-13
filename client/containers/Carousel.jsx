@@ -23,18 +23,22 @@ function CarouselDisplay(props) {
     >
       {props.activeContainers.map((obj, i) => (
         <Carousel.Item interval={interval} key={'container ' + i}>
-          <h2 style={{ display: 'inline', marginRight: '8px' }}>{obj.Names}</h2>
-          <select
-            onChange={(e) => {
-              e.preventDefault();
-              setDataLength(e.target.value);
-            }}
-          >
-            <option value={10}>10</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-            <option value={500}>500</option>
-          </select>
+          <div className="header">
+            <h2 style={{ display: 'inline', marginRight: '8px' }}>
+              {obj.Names}
+            </h2>
+            <select
+              onChange={(e) => {
+                e.preventDefault();
+                setDataLength(e.target.value);
+              }}
+            >
+              <option value={10}>10</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+              <option value={500}>500</option>
+            </select>
+          </div>
           <Chart
             className="lineChart"
             dataLength={dataLength}

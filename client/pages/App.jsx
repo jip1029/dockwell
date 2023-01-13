@@ -105,26 +105,28 @@ const App = () => {
   return (
     <div className="App">
       {loadingScreen && (
-        <div className='loadGauge'>
-        <LiquidGauge 
-          percent={0} width={500} height={500} label={'LOADING METRICS'} />
-      </div>)}
+        <div className="loadGauge">
+          <LiquidGauge
+            percent={0}
+            width={500}
+            height={500}
+            label={'LOADING METRICS'}
+          />
+        </div>
+      )}
       {!loadingScreen && (
         <div className="main">
           <div className="left">
             <div className="title">DOCKWELL</div>
-            <Logs
-              classname="logs-container"
-              activeContainers={activeContainers}
-            />
+            <Logs activeContainers={activeContainers} />
           </div>
           <div className="right">
             <div className="top">
-              <div className='CarouselDiv'>
-              <Carousel
-                className="carousel"
-                activeContainers={activeContainers}
-              />
+              <div className="CarouselDiv">
+                <Carousel
+                  className="carousel"
+                  activeContainers={activeContainers}
+                />
               </div>
               <Environments />
             </div>
