@@ -16,7 +16,6 @@
   box-sizing: border-box;
 }
 
-body,
 html {
   margin: 0;
   padding: 0;
@@ -51,6 +50,9 @@ body {
   }
 
   .App {
+    @media screen and (max-width: 1600px) {
+      transform: scale(0.9);
+    }
     .main {
       width: fit-content;
       display: grid;
